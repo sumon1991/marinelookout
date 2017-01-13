@@ -1,0 +1,1 @@
+[12-Apr-2016 06:24:25 UTC] PHP Fatal error:  Call to undefined function encrypt() in /home/marinelookout/public_html/upload/PHP_Kit/IFRAME_KIT/ccavRequestHandler.php on line 20

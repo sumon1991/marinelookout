@@ -1,0 +1,21 @@
+[07-Sep-2016 01:25:12 Asia/Kolkata] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::result_array() in /home/marinelookout/public_html/admin-app/controllers/subscription.php on line 45
+[15-Sep-2016 00:03:14 Asia/Kolkata] PHP Fatal error:  Call to a member function insertIntoTable() on a non-object in /home/marinelookout/public_html/admin-app/controllers/blog.php on line 377
+[15-Sep-2016 01:55:25 Asia/Kolkata] PHP Parse error:  syntax error, unexpected '$data' (T_VARIABLE), expecting function (T_FUNCTION) in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 150
+[15-Sep-2016 01:56:49 Asia/Kolkata] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 208
+[15-Sep-2016 02:33:52 Asia/Kolkata] PHP Parse error:  syntax error, unexpected '.' in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 343
+[08-Nov-2016 04:11:17 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:11:19 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:11:31 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:11:48 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:11:51 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:12:02 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:12:04 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:12:41 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:12:49 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:12:51 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:12:54 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:13:33 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:14:29 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:14:31 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:15:40 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451
+[08-Nov-2016 04:15:51 Asia/Kolkata] PHP Fatal error:  Call to undefined method Model_blogpost::get_subcat_data() in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 451

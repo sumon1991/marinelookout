@@ -1,0 +1,89 @@
+ <!--site-main-->
+            <div class="full-width site-main">
+                <!--top_con-->
+                <div class="full-width top_con">
+                    <div class="wrap clear">
+                        <!--top_con_lft-->
+                        <div class="top_con_lft">                           
+                            <img alt="" src="<?php echo FRONTEND_IMAGES;?>top_conimg.jpg">                        
+                        </div>
+                        <!--/top_con_lft-->
+                        
+        				
+                        <!--top_con_rt-->
+                        <div class="top_con_rt">
+                           <h2> <?php echo stripslashes($top_content[0]['cms_title']);?></h2>	   
+                           <p> <?php  echo word_limiter($top_content[0]['cms_content'],50);?> </p>
+                           <a href="<?php if($this->session->userdata('student_id')!= '')echo FRONTEND_URL."my_account/result/";else echo FRONTEND_URL."home/sign_up/";?>"> READ MORE </a>
+                        </div>
+                        <!--/top_con_rt-->
+                    </div>             
+                </div>
+                <!--/top_con-->
+                
+                 <div class="full-width mid_con">
+                    <div class="wrap clear">
+                    <!--<h2> Examination Notices - MEO PROGRAMME -<?php echo date('Y');?> </h2>-->
+		    <h2>Notifications</h2>
+		    <div class="list_hd">
+			<table>			
+			    <!--<tr>
+				<th>Date</th>
+				<th>Subject</th>
+				<th>Notice</th>
+			    </tr>-->			
+			</table>
+			<table class="vticker">			
+			<?php
+			    if(is_array($home_content['notice_list']) && COUNT($home_content['notice_list'])>0)
+			    {
+				foreach($home_content['notice_list'] as $v)
+				{
+			?>			
+			    <tr>
+				<td><?php echo date('d.m.Y',strtotime($v['added_on']));?></td>
+				<td><?php echo stripslashes($v['subject']);?></td>
+				<td><?php echo stripslashes(substr($v['content'],0,50));?></td>
+			    </tr>			
+			<?php
+				}
+			    }
+			?>			
+			</table>
+		    </div>                    
+                </div>
+                <!--/mid_con-->               
+                
+                <!--recent_pnl-->
+                <div class="full-width recent_pnl">
+                    <div class="wrap">
+                        <h2> RECENT <strong> ARTICLES </strong></h2>
+                        <div class="owl-carousel2">
+			 <?php
+			    if(is_array($home_content['article_list']) && COUNT($home_content['article_list'])>0)
+			    {
+				foreach($home_content['article_list'] as $v)
+				{
+				    $image_name 	= '';
+				    $wp_image_path 	= str_replace('upload/','blog/wp-content/uploads/',FILE_UPLOAD_ABSOLUTE_PATH);
+				    if(file_exists(str_replace(FRONTEND_URL.'blog/wp-content/uploads/',$wp_image_path,$v['image_link'])) && $v['image_link']!= '')
+					$image_name = $v['image_link'];
+				    else
+					$image_name = FILE_UPLOAD_URL.'no_image.png';
+			?>   
+				    <div class="item">
+					<a href="<?php echo $v['guid'];?>" target="_blank"><img src="<?php echo $image_name;?>" class="blog_image" alt="img"/></a>
+					<h3><strong><?php echo stripslashes($v['post_title']);?></strong></h3>
+					<p><?php echo stripslashes(substr($v['post_content'],0,200)).'...';?></p>
+				    </div>
+			<?php
+				}
+			    }
+			?>
+			</div>
+                    </div>
+                </div>
+                <!--/recent_pnl-->
+                </div>
+	    </div>
+            <!--/site-main-->

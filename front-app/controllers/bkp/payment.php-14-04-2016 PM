@@ -1,0 +1,45 @@
+<?php
+class Payment extends MY_Controller{
+
+    public function __construct(){
+        parent:: __construct();
+	$this->load->library('crypto');
+    }
+    
+    public function index()
+    {
+	$this->chk_login();
+	$this->data = '';
+	$this->templatelayout->header();
+	$this->templatelayout->footer();	
+	$this->elements['middle']		= 'payment/index';			
+	$this->elements_data['middle'] 	=  $this->data;		    
+	$this->layout->setLayout('layout');
+	$this->layout->multiple_view($this->elements,$this->elements_data);
+    }
+    
+    public function proceed()
+    {
+	$this->chk_login();
+	$this->data 	= 	'';
+	$post_value 	= 	$_POST;
+	//pr($_POST);
+	$working_key	=	WORKING_KEY;
+	$access_code	=	ACCESS_CODE;
+	$merchant_data	=	MERCHANT_DATA;
+
+	foreach ($post_value as $key => $value){
+		$merchant_data.=$key.'='.$value.'&';
+	}
+	//echo $merchant_data;exit;
+	$encrypted_data		=	$this->crypto->encrypt($merchant_data,$working_key); 
+	$this->data['production_url']	=	'https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&encRequest='.$encrypted_data.'&access_code='.$access_code;	
+	$this->templatelayout->header();
+	$this->templatelayout->footer();	
+	$this->elements['middle']		= 'payment/iframe';			
+	$this->elements_data['middle'] 	=  $this->data;		    
+	$this->layout->setLayout('layout');
+	$this->layout->multiple_view($this->elements,$this->elements_data);	
+    }
+}
+?>

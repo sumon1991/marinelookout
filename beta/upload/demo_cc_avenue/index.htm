@@ -1,0 +1,71 @@
+<html>
+<head>
+<script>
+	window.onload = function() {
+		var d = new Date().getTime();
+		document.getElementById("tid").value = d;
+	};
+</script>
+</head>
+<body>
+	<form method="post" name="customerData" action="ccavRequestHandler.php">
+		<table width="40%" height="100" border='1' align="center"><caption><font size="4" color="blue"><b>Payment Form</b></font></caption></table>
+			<table width="40%" height="100" border='1' align="center">
+				<tr>
+					<td>Parameter Name:</td><td>Parameter Value:</td>
+				</tr>
+				<tr>
+					<td colspan="2"> Compulsory information</td>
+				</tr>
+				<input type="hidden" name="tid" id="tid" readonly />
+				
+				<input type="hidden" name="merchant_id" value="91309"/>
+				<tr>
+					<td>Order Id	:</td><td><input type="text" name="order_id" value="123654789" readonly/></td>
+				</tr>
+				<tr>
+					<td>Amount	:</td><td><input type="text" name="amount" value="1.00"/></td>
+				</tr>
+				<tr>
+					<td>Currency	:</td><td><input type="text" name="currency" value="INR" readonly/></td>
+				</tr>
+				<input type="hidden" name="redirect_url" value="http://marinelookout.com/upload/demo_cc_avenue/ccavResponseHandler.php">
+			 	<input type="hidden" name="cancel_url" value="http://marinelookout.com/upload/demo_cc_avenue/ccavResponseHandler.php"/>
+			 	<input type="hidden" name="language" value="EN"/>
+		     	<tr>
+		     		<td colspan="2">Billing information(optional):</td>
+		     	</tr>
+		        <tr>
+		        	<td>Billing Name	:</td><td><input type="text" name="billing_name" value="Charli"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Billing Address	:</td><td><input type="text" name="billing_address" value="Room no 1101, near Railway station Ambad"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Billing City	:</td><td><input type="text" name="billing_city" value="Indore"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Billing State	:</td><td><input type="text" name="billing_state" value="MP"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Billing Zip	:</td><td><input type="text" name="billing_zip" value="425001"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Billing Country	:</td><td><input type="text" name="billing_country" value="India"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Billing Tel	:</td><td><input type="text" name="billing_tel" value="9876543210"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Billing Email	:</td><td><input type="text" name="billing_email" value="test@test.com"/></td>
+		        </tr>
+		        
+				<input type="hidden" name="integration_type" value="iframe_normal"/>
+		        <tr>
+		        	<td></td><td><INPUT TYPE="submit" value="CheckOut"></td>
+		        </tr>
+	      	</table>
+	      </form>
+	</body>
+</html>
+

@@ -1,0 +1,142 @@
+RewriteEngine On
+RewriteBase /
+
+#ADD TRAILING SLASH AT END IF ABSENT
+RewriteCond %{REQUEST_URI} !(/$|\.) 
+RewriteRule (.*) %{REQUEST_URI}/ [R=301,L]
+
+# FORCE www
+RewriteCond %{HTTP_HOST} !^$
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTPS}s ^on(s)|
+RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#END
+
+RewriteCond $1 !^(index\.php|sitemap\.xml|loadtest\.html|BingSiteAuth\.xml|robots\.txt|googlec26cd31596e2d4df\.html|admin|warp|upload|images|css|js|fonts|db|SpryAssets|flash|uploadify|html|blog|newversion|multilingual|ru|cn|th|support|yandex_658524342ca95fff.html|google3e5d28456cdd1ac5.html)
+RewriteRule ^(.*)$ index.php?$1 [L]
+
+## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/javascript "access 1 day"
+ExpiresByType text/x-javascript "access 1 day"
+ExpiresByType application/javascript "access 1 day"
+ExpiresByType application/x-javascript "access 1 day"
+ExpiresByType application/json "access 1 day" 
+</IfModule>
+## EXPIRES CACHING ##
+
+<IfModule mod_mime.c>
+	AddType text/css .css
+	AddType application/x-javascript .js
+	AddType image/gif .gif
+	AddType image/jpeg .jpg .jpeg .jpe
+	AddType application/x-font-otf .otf
+	AddType image/png .png
+	AddType image/tiff .tif .tiff
+	AddType application/x-font-ttf .ttf .ttc
+	AddType application/zip .zip
+</IfModule>
+
+<IfModule mod_deflate.c>
+	<IfModule mod_headers.c>
+		Header append Vary User-Agent env=!dont-vary
+	</IfModule>
+		AddOutputFilterByType DEFLATE text/css text/x-component application/x-javascript application/javascript text/javascript text/x-js text/html text/xml application/json
+	<IfModule mod_mime.c>
+		# DEFLATE by extension
+		AddOutputFilter DEFLATE js css htm html xml
+	</IfModule>
+</IfModule>
+<FilesMatch "\.(css|js)$">
+	FileETag MTime Size
+	<IfModule mod_headers.c>
+		Header set Pragma "public"
+		Header append Cache-Control "public, must-revalidate, proxy-revalidate"
+                #Header unset ETag
+                #Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+                #Header set Pragma "no-cache"
+                #Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+	</IfModule>
+</FilesMatch>
+<FilesMatch "\.(gif|gz|gzip|ico|ttf)$">
+	FileETag MTime Size
+	<IfModule mod_headers.c>
+		Header set Pragma "public"
+		Header append Cache-Control "public, must-revalidate, proxy-revalidate"
+	</IfModule>
+</FilesMatch>
+
+#301 Redirects
+Redirect 301 /property-rentals/kalim-seaview-villa-for-rent/ http://www.livephuket.com/property-rentals/5-bedroom-seaview-villa-for-rent-in-patong/
+Redirect 301 /property-sales/luxury-2-bed-in-kalim-for-sale/ http://www.livephuket.com/property-sales/luxury-2-bed-seaview-condo-in-kalim/
+Redirect 301 /property-rentals/patong-pool-villa-for-rent/ http://www.livephuket.com/property-rentals/4-bedroom-patong-pool-villa-for-rent/
+Redirect 301 /property-rentals/kalim-seaview-villa/ http://www.livephuket.com/property-rentals/4-bedroom-seaview-villa-for-rent-in-patong/
+Redirect 301 /property-rentals/patong-villa-rental-with-seaview/ http://www.livephuket.com/property-rentals/patong-villa-rental-with-sea-view/
+Redirect 301 /property-rentals/4-bed-private-pool-villa-in-kata/ http://www.livephuket.com/property-rentals/4-bed-private-pool-villa-in-kata-for-rent/
+Redirect 301 /property-rentals/four-bed-budget-pool-villa-in-nai-harn/ http://www.livephuket.com/property-rentals/4-bedroom-budget-pool-villa-in-nai-harn/
+Redirect 301 /property-rentals/3-bedroom-kata-pool-villa-rental/ http://www.livephuket.com/property-rentals/3-bedroom-kata-pool-villa-for-rental/
+Redirect 301 /property-rentals/luxury-mountain-view-villa-in-kamala/ http://www.livephuket.com/property-rentals/kamala-luxury-moutain-view-villa-rental/
+Redirect 301 /property-rentals/3-bedroom-kata-moutain-view-villa-for-rent/ http://www.livephuket.com/property-rentals/3-bedroom-kata-mountain-view-villa-for-rent/
+Redirect 301 /property-rentals/4-bedroom-villa-in-wang-nam-jai/ http://www.livephuket.com/property-rentals/4-bedroom-villa-in-kamala/
+Redirect 301 /property-sales/seaview-2-bed-condo-in-bang-tao-for-sale/ http://www.livephuket.com/property-sales/modern-2-bed-condo-in-bang-tao-beach/
+Redirect 301 /property-rentals/7-bedroom-luxury-seaview-patong-villa/ http://www.livephuket.com/property-rentals/7-bedroom-luxury-seaview-patong-villa-for-rent/
+Redirect 301 /property-rentals/ocean-view-villa-rental-in-patong/ http://www.livephuket.com/property-rentals/3-bed-ocean-view-villa-rental-in-patong/
+Redirect 301 /property-rentals/patong-ocean-view-villa-for-rent/ http://www.livephuket.com/property-rentals/3-bed-patong-ocean-view-villa-for-rent/
+Redirect 301 /property-rentals/kalim-seaview-villa-for-rent-1 http://www.livephuket.com/property-rentals/5-bedroom-seaview-villa-for-rent-in-patong/
+Redirect 301 /property-rentals/sea-view-villa-in-patong/ http://www.livephuket.com/property-rentals/4-bedroom-seaview-villa-for-rent-in-patong/
+Redirect 301 /property-rentals/5-bedroom-villa-for-rent-in-kamala/ http://www.livephuket.com/property-rentals/5-bedroom-villa-for-rent-in-kamala-1/
+Redirect 301 /property-rentals/patong-sea-view-pool-villa-rental/ http://www.livephuket.com/property-rentals/5-bed-patong-sea-view-pool-villa-rental/
+Redirect 301 /property-rentals/affordable-3-bed-seaview-villa-in-patong/ http://www.livephuket.com/property-rentals/affordable-3-bed-seaview-villa-rental-in-patong/
+Redirect 301 /property-rentals/5-bed-luxury-sea-view-villa-in-patong/ http://www.livephuket.com/property-rentals/5-bed-luxury-sea-view-villa-for-rent-in-patong/
+
+Redirect 301 /property-rentals/one-bed-budget-pool-villa-in-nai-harn/ http://www.livephuket.com/property-rentals/1-bed-budget-pool-villa-in-nai-harn/
+Redirect 301 /property-rentals/four-bedroom-villa-rental-in-kata/ http://www.livephuket.com/property-rentals/4-bed-villa-for-rent-in-kata/
+Redirect 301 /property-rentals/patong-3-bed-seaview-villa-for-rent/ http://www.livephuket.com/property-rentals/3-bedroom-sea-view-patong-villa-for-rent/
+Redirect 301 /property-rentals/family-open-style-villa-in-laguna/ http://www.livephuket.com/property-rentals/family-open-style-villa-in-sai-taan-laguna/
+Redirect 301 /property-rentals/luxury-3-bed-patong-villa-rental/ http://www.livephuket.com/property-rentals/luxury-sea-view-villa-rental-in-patong/
+Redirect 301 /property-rentals/luxury-patong-pool-villa-with-seaview/ http://www.livephuket.com/property-rentals/luxury-patong-sea-view-villa/
+Redirect 301 /property-rentals/12-bedroom-luxury-villa-in-cherngtalay-for-rent/ http://www.livephuket.com/property-rentals/12-bedroom-luxury-villa-in-layan-for-rent/
+
+Redirect 301 /property-sales/stunning-kata-3-bed-penthouse http://www.livephuket.com/property-sales/outstanding-penthouse-in-kata-beach/
+Redirect 301 /property-rentals/luxury-6-bedroom-beachfront-villa http://www.livephuket.com/property-rentals/luxury-6-bedroom-beachfront-villa-on-natai-beach/
+Redirect 301 /property-rentals/laguna-5-bed-villa-for-rent http://www.livephuket.com/property-rentals/5-bedroom-family-villa-rental-in-laguna/
+Redirect 301 /property-rentals/luxury-4-bed-patong-villa-rental http://www.livephuket.com/property-rentals/4-bed-luxury-patong-villa-for-rent/
+
+Redirect 301 /property-rentals/stunning-5-bed-oceanfront-villa/ http://www.livephuket.com/property-rentals/5-bed-oceanfront-villa-for-rent-in-cape-panwa/
+Redirect 301 /property-rentals/patong-three-bedroom-seaview-villa/ http://www.livephuket.com/property-rentals/three-bedroom-patong-seaview-villa-for-rent/
+Redirect 301 /property-rentals/baan-chompoo/ http://www.livephuket.com/property-rentals/3-bed-pool-villa-for-rent-in-kamala/
+Redirect 301 /properties/kamala-regent-2/ http://www.livephuket.com/property-rentals/three-bedroom-penthouse-for-rent-in-kamala/
+
+Redirect 301 /property-rentals/1-bedroom-apartment-for-rent-in-patong-1/ http://www.livephuket.com/property-rentals/1-bedroom-apartment-for-rent-in-patong/
+Redirect 301 /property-rentals/5-bedroom-villa-rental-in-rawai/ http://www.livephuket.com/
+Redirect 301 /property-rentals/3-bedroom-luxury-condo-for-rent-in-patong/ http://www.livephuket.com/property-rentals/three-bedroom-kalim-condo-with-sea-view/
+Redirect 301 /property-rentals/4-bedroom-apartment-for-rent-in-kata/ http://www.livephuket.com/
+Redirect 301 /property-rentals/3-bedroom-luxury-patong-villa/ http://www.livephuket.com/property-rentals/3-bedroom-luxury-villa-for-rent-in-patong/
+Redirect 301 /property-rentals/3-bedroom-patong-apartment-rental/ http://www.livephuket.com/
+
+Redirect 301 /property-rentals/4-bedroom-luxury-oceanfront-villa-for-rent-in-kamala/ http://www.livephuket.com/property-rentals/luxury-oceanfront-villa-for-rent-in-kamala/
+
+Redirect 301 /property-rentals/four-bedroom-pool-villa-in-kamala http://www.livephuket.com/property-rentals/4-bedroom-kamala-pool-villa-rental/
+Redirect 301 /property-rentals/patong-oceanfront-villa-rental/ http://www.livephuket.com/property-rentals/2-bedroom-oceanfront-villa-for-rent-in-patong/
+Redirect 301 /property-rentals/1-bedroom-ocean-loft-villa-for-rent-in-kata/ http://www.livephuket.com/
+Redirect 301 /property-rentals/4-bedroom-kamala-villa-rental/ http://www.livephuket.com/property-rentals/4-bed-kamala-villa-for-rent/
+Redirect 301 /property-rentals/3-bedroom-sky-villa-for-rent-in-kata http://www.livephuket.com/
+Redirect 301 /property-rentals/2-bedroom-apartment-for-rent-in-laguna/ http://www.livephuket.com/property-rentals/2-bedroom-apartment-for-rent-in-laguna-1/
+Redirect 301 /property-sales/glorious-5-bed-modern-seaview-villa-in-cape-yamu/ http://www.livephuket.com/property-sales/exclusive-sea-view-5-bedroom-villa/
+Redirect 301 /property-sales/breathtaking-views-condo-in-patong-with-1-bed/ http://www.livephuket.com/
+Redirect 301 /blog/category/phuket-real-estate http://www.livephuket.com/blog/
+Redirect 301 /property-rentals/1-bed-pool-villa-for-rent-in-cherng-talay/ http://www.livephuket.com/property-sales/private-one-bedroom-pool-villa/
+Redirect 301 /property-rentals/kamala-apartment-rental/ http://www.livephuket.com/property-rentals/kamala-apartment-for-rent/
+
+Redirect 301 /property-rentals/stunning-4bed-with-views-of-bang-tao/ http://www.livephuket.com/maplist/vacation-rentals/
+Redirect 301 /property-rentals/2-bed-villa-for-rent-in-kata/ http://www.livephuket.com/maplist/vacation-rentals/
+Redirect 301 /property-rentals/3-bedroom-sky-villa-for-rent-in-kata/ http://www.livephuket.com/maplist/vacation-rentals/
+Redirect 301 /property-sales/2-bedroom-condo-in-quiet-hillside-community/  http://www.livephuket.com/maplist/sales/
+Redirect 301 /property-sales/2-bedroom-mountain-view-condo/ http://www.livephuket.com/maplist/sales/
+
+#Redirect 301 /rentals-results/ http://www.livephuket.com/
+#Redirect 301 /sales-results/ http://www.livephuket.com/
+#Redirect 301 /longterm-results/ http://www.livephuket.com/
+#Redirect 301 /rental/ http://www.livephuket.com/
+#Redirect 301 /sales/ http://www.livephuket.com/

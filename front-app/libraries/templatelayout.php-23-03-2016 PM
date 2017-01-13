@@ -1,0 +1,41 @@
+<?php
+if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ * Description of templatelayout
+ */
+class templatelayout {
+     
+     var $obj;
+    
+     public function __construct()
+     {
+        $this->obj =& get_instance();
+     }
+
+   
+     public function header()
+     {
+	  $this->header = '';
+	 // $this->obj->elements['topbar']='layout/topbar';
+	  $this->obj->elements['header']='layout/header';
+	  $this->obj->elements_data['header'] = $this->header; 
+     }
+     
+     public  function footer()
+     {
+
+
+      $this->footer = '';
+      $this->footer['footerimage'] = $this->obj->model_basic->getValues_conditions(ADVERTISEMENT,array('title','alignment','image','advertisement_link'),'','alignment="bottom" AND is_active="yes" ','','','4');
+      //pr($this->footer['footerimage']);
+	  $this->footer['footersitesetting'] = $this->obj->model_basic->get_settings('3,4,5,6,7,8,9,10,11,60,63');
+	  //pr($this->footer['footersitesetting']);
+	  //$this->obj->elements['footer']='layout/footer';
+	  $this->obj->elements['footer']='layout/footer';
+	  $this->obj->elements_data['footer'] = $this->footer; 
+     }
+     
+	
+}
+?>

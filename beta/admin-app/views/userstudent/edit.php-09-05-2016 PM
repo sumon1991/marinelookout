@@ -1,0 +1,241 @@
+ <!--BEGIN TITLE & BREADCRUMB PAGE-->
+<div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+    <div class="page-header pull-left">
+        <div class="page-title">Update Student</div>
+    </div>
+ <!--For breadcrump-->    
+  <!-- <ol class="breadcrumb page-breadcrumb pull-right">
+    <?php
+    $tot	=	count($brdLink);
+    if(isset($brdLink) && is_array($brdLink)){
+    foreach($brdLink as $k=>$v){?>
+      <li><i class="<?php echo $v['logo'];?>">&nbsp;&nbsp;</i><a href="<?php echo $v['link'];?>"><?php echo $v['name'];?></a>
+	<?php if($tot != $k+1)
+	    echo "&nbsp;>&nbsp;";
+	?>
+      </li>
+    <?php }}?>
+  </ol> -->  
+  <!--For breadcrump end-->
+    <div class="clearfix"></div>
+</div>
+<!--END TITLE & BREADCRUMB PAGE-->
+
+
+
+<?php 
+//pr($studentList);
+
+
+?>
+<!--BEGIN CONTENT-->
+        <div class="page-content">
+        <div id="form-layouts" class="row">
+        <div class="col-lg-12">
+         <div style="background: transparent; border: 0; box-shadow: none !important;" class="pan mtl mbn responsive">
+                            <div id="tab-form-seperated" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        
+                                       
+                                        <?php if(validation_errors() != FALSE){?>
+                                        <div align="center">
+                                            <div class="nNote nFailure" style="width: 600px;color:red;">
+                                                <?php echo validation_errors('<p>', '</p>'); ?>
+                                            
+                                            </div>
+                                        </div>
+                                        <?php } ?>
+                                        
+                                        <div class="panel panel-yellow portlet box portlet-yellow">
+                                            <!--<div class="panel-heading">Admin User Form</div>-->
+                                            <div class="portlet-header">
+                                                    <div class="caption">Update Student Form</div>
+                                                    <div class="tools">
+                                                        <i class="fa fa-chevron-up"></i>
+                                                    </div>
+                                            </div>
+                                            <div class="portlet-body panel-body pan">
+                                                
+                                                <form method="post" action="<?php echo BACKEND_URL."studentuser/edit/".$studentList[0]['id'];?>" class="form-validate form-horizontal form-seperated " enctype="multipart/form-data" id="add_form">
+						                          <input type="hidden" name="action" value="edit">
+                                                    <div class="form-body">
+                                                        <div class="form-group">
+                                   <div class="text-center mbl">
+
+                                    
+                                                               
+                            <img class="img-circle123" style="border: 5px solid #fff; box-shadow: 0 2px 3px rgba(0,0,0,0.25);" src="<?php echo(isset($studentList[0]['image']) && $studentList[0]['image']!='' && file_exists(FILE_UPLOAD_ABSOLUTE_PATH."student/".$studentList[0]['image']) ? BACKEND_IMAGE_PATH."student/".$studentList[0]['image'] : BACKEND_IMAGE_PATH.'no_image.png');?>" height="100" width="100">
+                                                      
+                                        
+                                    </div>                         </div>
+                                <input type="hidden" name="updateImg" value="<?php echo $studentList[0]['image'];?>">
+                                   <div class="form-group">
+                                        <label class="col-sm-3 control-label">Image Upload</label>
+
+                                        <div class="col-sm-9 controls">
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <input type="file" name="userfile" id="userfile"  value=""/></div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                                       <!-- First Name -->
+                                                        <div class="form-group"><label for="firstname" class="col-md-3 control-label">First Name <span class='require'>*</span></label>
+
+                                                            <div class="col-md-6">
+                                                                <input name="firstname" type="text" placeholder="First Name" class="form-control required firstname" id="firstname" value="<?=$studentList[0]['firstname'];?>"/>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Last Name -->
+                                                        <div class="form-group"><label for="lastname" class="col-md-3 control-label">Last Name <span class='require'>*</span></label>
+
+                                                            <div class="col-md-6">
+                                                                
+                                                                    <input name="lastname" type="text" placeholder="Last Name" class="form-control required lastname" id="lastname" value="<?=$studentList[0]['lastname'];?>"/>
+                                    
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Email Address -->
+                                                        <div class="form-group"><label for="email" class="col-md-3 control-label">Email <span class='require'>*</span></label>
+
+                                                            <div class="col-md-6">
+                                                                <div class="input-icon"><i class="fa fa-envelope"></i>
+                                                                    <input type="text" id="email" name="email"  placeholder="Email Address email" class="form-control required" data-type="email" value="<?=$studentList[0]['email'];?>"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Password -->
+                                                        <div class="form-group"><label for="password" class="col-md-3 control-label">Password <span class='require'>*</span></label>
+
+                                                            <div class="col-md-6">
+                                                                <input type="password" name="password" id="password" class="form-control required password"  placeholder="Password" value="<?=$studentList[0]['password'];?>">
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Confirm Password -->
+                                                        <div class="form-group"><label for="conf_password" class="col-md-3 control-label">Repeat Password <span class='require'>*</span></label>
+
+                                                            <div class="col-md-4">
+                                                                <input type="password" name="conf_password" id="conf_password"  class="form-control required conf_password"  data-equalto="#password" placeholder="Repeat Password" value="<?=$studentList[0]['password'];?>">
+                                                            </div>
+                                                        </div>
+
+
+                                                        <!-- Date of Birth -->
+                                                        <div class="form-group"><label for="dob" class="col-md-3 control-label">DOB <span class='require'>*</span></label>
+                                                            <?php $dob = explode('-', $studentList[0]['dob']); ?>
+                                                            <!-- Year -->
+                                                            <div class="col-md-2">
+                                                                <select data-required="true" name="year" id="year" class="form-control required year">
+                                                                    <option value="">-- Year --</option>
+                                                                    <?php for($i=1970;$i<=2000;$i++){ ?>
+                                                                    <option value="<?=$i;?>" <?=$i==$dob[0]?'selected':'';?>><?=$i;?></option>
+                                                                    <? } ?>
+                                                                </select>
+                                                            </div>
+                                                            <!-- Month -->
+                                                            <div class="col-md-2">
+                                                                <select data-required="true" name="month" id="month" class="form-control required month">
+                                                                    <option value="">-- Month --</option>
+                                                                    <?php for($j=1;$j<=12;$j++){ ?>
+                                                                    <option value="<?=$j;?>" <?=$j==$dob[1]?'selected':'';?>><?=$j;?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                            </div>
+                                                            <!-- Day -->
+                                                            <div class="col-md-2">
+                                                                <select data-required="true" name="day" id="day" class="form-control required day">
+                                                                    <option value="">-- Day --</option>
+                                                                    <?php for($k=1;$k<=31;$k++){ ?>
+                                                                    <option value="<?=$k;?>" <?=$k==$dob[2]?'selected':'';?>><?=$k;?></option>
+                                                                    <? } ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                         
+                                                        <!-- Gender -->                        
+                                                        <div class="form-group">
+                                                            <label for="gender" class="col-md-3 control-label">Gender <span class='require'>*</span></label>
+                                                            <div class="col-md-4">
+                                                                <select data-required="true" name="gender" id="gender" class="form-control required gender">
+                                                                    <option value="">--Select Gender--</option>
+                                                                    <option value="male" <?=$studentList[0]['gender']=='male'?'selected':'';?>>Male</option> 
+                                                                    <option value="female" <?=$studentList[0]['gender']=='female'?'selected':'';?>>Female</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Mobile -->
+                                                        <div class="form-group"><label for="reg_password" class="col-md-3 control-label">Mobile <span class='require'>*</span></label>
+
+                                                            <div class="col-md-4">
+                                                                <input type="text" name="mobile" id="mobile" class="form-control required mobile"  placeholder="Mobile" value="<?=$studentList[0]['mobile'];?>">
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Indos -->
+                                                        <div class="form-group"><label for="indos" class="col-md-3 control-label">INDOS <span class='require'>*</span></label>
+
+                                                            <div class="col-md-4">
+                                                                <input type="text" name="indos" id="indos" class="form-control required indos"  placeholder="Indos" value="<?=$studentList[0]['indos'];?>">
+                                                            </div>
+                                                        </div>
+							
+							<!-- Wallet Balance -->
+                                                        <div class="form-group"><label for="indos" class="col-md-3 control-label">Wallet Balance <span class='require'>*</span></label>
+
+                                                            <div class="col-md-4">
+                                                                <input type="text" name="wallet" id="wallet" class="form-control required number"  placeholder="Indos" value="<?=$studentList[0]['wallet'];?>">
+                                                            </div>
+                                                        </div>
+							
+														
+														<!-- View Exam Details -->                        
+                                                        <div class="form-group">
+                                                            <label for="view_exam_details" class="col-md-3 control-label">View Exam Details <span class='require'>*</span></label>
+                                                            <div class="col-md-4">
+                                                                <select data-required="true" name="view_exam_details" id="view_exam_details" class="form-control required view_exam_details">
+                                                                    <option value="">--Select Permission--</option>
+                                                                    <option value="yes" <?=$studentList[0]['view_exam_details']=='yes'?'selected':'';?>>Yes</option> 
+                                                                    <option value="no" <?=$studentList[0]['view_exam_details']=='no'?'selected':'';?>>No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Status -->                        
+                                                        <div class="form-group">
+                                                            <label for="status" class="col-md-3 control-label">Status <span class='require'>*</span></label>
+                                                            <div class="col-md-4">
+                                                                <select data-required="true" name="status" id="status" class="form-control required status">
+                                                                    <option value="">--Select Status--</option>
+                                                                    <option value="yes" <?=$studentList[0]['is_active']=='yes'?'selected':'';?>>Active</option> 
+                                                                    <option value="no" <?=$studentList[0]['is_active']=='no'?'selected':'';?>>Inactive</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                        
+                                                        
+                                                    <div class="form-actions text-right pal">
+                                                        <button type="submit" class="btn btn-primary">Update Student</button>
+                                                        &nbsp;
+                                                        <button type="button" class="btn btn-green" onclick="location.href='<?php echo BACKEND_URL."studentuser/index";?>'">Return</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+         </div>
+        </div>
+        </div>
+        </div>
+<!--END CONTENT-->
+<!--BEGIN CONTENT QUICK SIDEBAR-->
+
+<!--END CONTENT QUICK SIDEBAR-->

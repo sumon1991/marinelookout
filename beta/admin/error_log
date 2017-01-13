@@ -1,0 +1,5 @@
+[07-Sep-2016 01:25:12 Asia/Kolkata] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::result_array() in /home/marinelookout/public_html/admin-app/controllers/subscription.php on line 45
+[15-Sep-2016 00:03:14 Asia/Kolkata] PHP Fatal error:  Call to a member function insertIntoTable() on a non-object in /home/marinelookout/public_html/admin-app/controllers/blog.php on line 377
+[15-Sep-2016 01:55:25 Asia/Kolkata] PHP Parse error:  syntax error, unexpected '$data' (T_VARIABLE), expecting function (T_FUNCTION) in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 150
+[15-Sep-2016 01:56:49 Asia/Kolkata] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 208
+[15-Sep-2016 02:33:52 Asia/Kolkata] PHP Parse error:  syntax error, unexpected '.' in /home/marinelookout/public_html/admin-app/controllers/blogpost.php on line 343

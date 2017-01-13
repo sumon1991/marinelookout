@@ -1,0 +1,5 @@
+[02-Mar-2016 08:33:29 UTC] PHP Fatal error:  Call to undefined function is_user_loggedin() in /home/marinelookout/public_html/blog/wp-content/themes/epariksha/header.php on line 75
+[02-Mar-2016 08:33:30 UTC] PHP Fatal error:  Call to undefined function is_user_loggedin() in /home/marinelookout/public_html/blog/wp-content/themes/epariksha/header.php on line 75
+[02-Mar-2016 08:35:27 UTC] PHP Fatal error:  Call to undefined function is_user_loggedin() in /home/marinelookout/public_html/blog/wp-content/themes/epariksha/header.php on line 79
+[02-Mar-2016 08:35:43 UTC] PHP Fatal error:  Call to undefined function is_user_loggedin() in /home/marinelookout/public_html/blog/wp-content/themes/epariksha/header.php on line 79
+[16-Nov-2016 10:39:23 UTC] PHP Warning:  array_unshift() expects parameter 1 to be array, null given in /home/marinelookout/public_html/blog/wp-includes/class-wp-xmlrpc-server.php on line 580
